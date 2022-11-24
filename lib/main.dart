@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:polines_news/article.dart';
 import 'package:polines_news/detail_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:polines_news/styles.dart';
+import 'package:polines_news/widgets/custom_scaffold.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +17,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'News App',
       theme: ThemeData(
+        textTheme: myTextTheme,
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: primaryColor,
+              onPrimary: Colors.black,
+              secondary: secondaryColor,
+            ),
+        appBarTheme: AppBarTheme(elevation: 0),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            primary: secondaryColor,
+            onPrimary: Colors.white,
+            textStyle: const TextStyle(),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(0),
+              ),
+            ),
+          ),
+        ),
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -84,7 +105,7 @@ class ArticleWebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
       appBar: AppBar(
         title: Text('News App'),
       ),
